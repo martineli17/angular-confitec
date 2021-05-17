@@ -1,0 +1,54 @@
+<form [formGroup]="form">
+    <input type="text" formControlName="id" hidden [value]="usuario.id">
+    <div class="row justify-content-center">
+        <div class="col-3  justify-content-center">
+            <mat-form-field appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input [value]="usuario.nome" formControlName="Nome" class="icon-color-custom"  matInput placeholder="Informe o seu Nome">
+                <mat-hint  *ngIf="validatorMsg.ContemErro(errosMsg, 'Nome')">{{validatorMsg.BuscarMensagemErro(errosMsg, "Nome")}}</mat-hint>
+                <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="col-3 justify-content-center">
+            <mat-form-field appearance="outline">
+                <mat-label>Sobrenome</mat-label>
+                <input [value]="usuario.sobrenome"  formControlName="Sobrenome" class="icon-color-custom"  matInput placeholder="Informe o seu sobrenome">
+                <mat-hint  *ngIf="validatorMsg.ContemErro(errosMsg, 'Sobrenome')">{{validatorMsg.BuscarMensagemErro(errosMsg, "Sobrenome")}}</mat-hint>
+                <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="col-3  justify-content-center">
+            <mat-form-field appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input [value]="usuario.email"  formControlName="Email" class="icon-color-custom"  matInput placeholder="Informe o seu e-mail">
+                <mat-hint *ngIf="validatorMsg.ContemErro(errosMsg, 'Email')">{{validatorMsg.BuscarMensagemErro(errosMsg, "Email")}}</mat-hint>
+                <mat-icon class="icon-color-custom" matSuffix>alternate_email</mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="col-3  justify-content-center">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Data de nascimento</mat-label>
+                <input [value]="usuario.dataNascimento"  formControlName="DataNascimento"  matInput [matDatepickerFilter]="filterDate" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-hint *ngIf="validatorMsg.ContemErro(errosMsg, 'DataNascimento')">{{validatorMsg.BuscarMensagemErro(errosMsg, "DataNascimento")}}</mat-hint>
+              </mat-form-field>
+        </div>
+        <div class="col-3  justify-content-center">
+            <mat-form-field appearance="fill">
+                <mat-label>Escolaridade</mat-label>
+                <mat-select formControlName="Escolaridade" [value]="usuario.escolaridade" >
+                    <mat-option value="Infantil">Infantil</mat-option>
+                    <mat-option value="Fundamental">Fundamental</mat-option>
+                    <mat-option value="Medio">Médio</mat-option>
+                    <mat-option value="Superior">Superior</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-1 justify-content-center mt-4">
+            <button mat-raised-button color="primary" (click)="Send()">Salvar</button>
+        </div>
+    </div>
+</form>

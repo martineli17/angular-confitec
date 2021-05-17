@@ -1,0 +1,29 @@
+<!-- <div class="row">
+    <div class="row">
+        <confitec-add-usuario (SendForm)="Send($event)"></confitec-add-usuario>
+    </div>
+    <div class="row">
+        <confitec-usuario-list [usuarios]="usuarios" (Excluir)="Delete($event)"></confitec-usuario-list>
+    </div>
+</div> -->
+<div style="margin: 0 auto;" class="row justify-content-center mb-1">
+    <div class="alert alert-dark mt-3" role="alert">
+        Gerenciamento de usuários
+    </div>
+</div>
+<mat-grid-list cols="2" role="listitem" style="margin: auto; width: 90%; padding-bottom: 40px;">
+    <mat-accordion>
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Formulário de cadastro
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <confitec-add-usuario role="listitem" (SendForm)="Send($event)" [usuario]="usuarioToForm">
+            </confitec-add-usuario>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <confitec-usuario-list role="listitem" [usuarios]="usuarios" (Excluir)="Delete($event)"
+        (Atualizar)="SendToForm($event)">
+    </confitec-usuario-list>
+</mat-grid-list>
